@@ -63,6 +63,9 @@ echo Executing Payara Server with the following command line:
 echo $COMMAND
 echo
 
+# Import cert
+keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/cert/new-portal-web-poc.app-lb.ocp.devops.pd.ntt.hk.cer -alias app-lb -noprompt -storepass changeit
+
 # Run the server in foreground - read master password from variable or file or use the default "changeit" password
 
 set +x
