@@ -65,6 +65,8 @@ echo
 
 # Import cert
 mkdir /tmp/cert
+wget http://192.168.66.251:8888/newportal/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
+keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -alias openshift-app-lb2 -noprompt -storepass changeit
 wget http://192.168.66.251:8888/newportal/app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
 keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/app-lb.ocp2.devops.pd.ntt.hk.cer -alias app-lb2 -noprompt -storepass changeit
 
