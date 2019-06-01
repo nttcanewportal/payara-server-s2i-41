@@ -38,7 +38,7 @@ echo "create-jdbc-resource --connectionpoolid=ProfileMgmtPool --enabled=true 	jd
 
 echo "create-custom-resource --restype=java.util.Properties --factoryclass=org.glassfish.resources.custom.factory.PropertiesFactory --property=ldapUseSSL=false:connectTimeout=20000:ldapAuthnBaseDn=dc\=openldap,dc\=vc01-tkolab.pd.ntt.hk:ldapAuthnManagerDN=cn\=Manager,dc\=openldap,dc\=vc01-tkolab.pd.ntt.hk:ldapAuthnManagerPassword=P@ssword123:ldapUrl=ldap\://172.16.5.20\:389 ldap/ProfileManagement" >> $POSTBOOT_COMMANDS
 
-echo "asadmin create-jvm-options --target=server-config -Djavax.net.ssl.trustStorePassword\=changeit:-Djavax.net.ssl.keyStorePassword\=changeit" >> $POSTBOOT_COMMANDS
+echo "create-jvm-options --target=server-config -Djavax.net.ssl.trustStorePassword\=changeit:-Djavax.net.ssl.keyStorePassword\=changeit" >> $POSTBOOT_COMMANDS
 
 ##startInForeground.sh
 AS_ADMIN_PATH=/opt/payara41/bin/asadmin
