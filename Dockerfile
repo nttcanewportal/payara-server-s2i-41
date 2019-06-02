@@ -79,7 +79,8 @@ ENV AUTODEPLOY_DIR ${PAYARA_PATH}/glassfish/domains/${PAYARA_DOMAIN}/autodeploy
 USER root
 RUN chmod -R 777 /opt/payara41/glassfish/domains/domain1/logs
 RUN chmod -R 777 /opt/payara41/glassfish/domains/domain1/autodeploy
-RUN chmod -R 777 /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts
+RUN chmod -R 777 /opt/payara41/glassfish/domains/domain1/config/cacerts.jks
+# RUN chmod -R 777 /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts
 
 RUN chgrp -R 0 /opt && \
     chmod -R g=u /opt
