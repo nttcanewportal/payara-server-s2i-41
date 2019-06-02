@@ -52,7 +52,7 @@ COPY ./pwdfile /opt/pwdfile
 
 ENV PRE_POSTBOOT_COMMANDS=/opt/payara41/pre-post-boot-commands.asadmin
 RUN echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStorePassword=changeit\"" >> ${PRE_POSTBOOT_COMMANDS}
-RUN echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStore=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts\"" >> ${POSTBOOT_COMMANDS}
+RUN echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStore=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts\"" >> ${PRE_POSTBOOT_COMMANDS}
 RUN echo "create-jvm-options --target=server-config \"-Dcom.sun.security.enableAIAcaIssuers=true\"" >> ${PRE_POSTBOOT_COMMANDS}
 
 # domain1
