@@ -40,7 +40,7 @@ echo "create-custom-resource --restype=java.util.Properties --factoryclass=org.g
 
 echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStorePassword=changeit\"" >> $POSTBOOT_COMMANDS
 echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStore=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts\"" >> $POSTBOOT_COMMANDS
-
+echo "create-jvm-options --target=server-config \"-Dcom.sun.net.ssl.checkRevocation=false\"" >> $POSTBOOT_COMMANDS
 ##startInForeground.sh
 AS_ADMIN_PATH=/opt/payara41/bin/asadmin
 PASSWORD_FILE="/opt/pwdfile"
