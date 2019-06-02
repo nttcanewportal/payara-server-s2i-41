@@ -41,6 +41,14 @@ echo "create-custom-resource --restype=java.util.Properties --factoryclass=org.g
 echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStorePassword=changeit\"" >> $POSTBOOT_COMMANDS
 echo "create-jvm-options --target=server-config \"-Djavax.net.ssl.trustStore=/usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts\"" >> $POSTBOOT_COMMANDS
 echo "create-jvm-options --target=server-config \"-Dcom.sun.net.ssl.checkRevocation=false\"" >> $POSTBOOT_COMMANDS
+
+# Import cert
+mkdir /tmp/cert
+wget http://192.168.66.251:8888/newportal/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
+keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -alias openshift-app-lb2 -noprompt -storepass changeit
+wget http://192.168.66.251:8888/newportal/app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
+keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/app-lb.ocp2.devops.pd.ntt.hk.cer -alias app-lb2 -noprompt -storepass changeit
+
 ##startInForeground.sh
 AS_ADMIN_PATH=/opt/payara41/bin/asadmin
 PASSWORD_FILE="/opt/pwdfile"
@@ -65,13 +73,6 @@ COMMAND=`echo "$OUTPUT" | sed -n -e '2,/^$/p'`
 echo Executing Payara Server with the following command line:
 echo $COMMAND
 echo
-
-# Import cert
-mkdir /tmp/cert
-wget http://192.168.66.251:8888/newportal/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
-keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -alias openshift-app-lb2 -noprompt -storepass changeit
-wget http://192.168.66.251:8888/newportal/app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
-keytool -import -keystore /usr/lib/jvm/java-1.8.0-amazon-corretto/jre/lib/security/cacerts -file /tmp/cert/app-lb.ocp2.devops.pd.ntt.hk.cer -alias app-lb2 -noprompt -storepass changeit
 
 # Run the server in foreground - read master password from variable or file or use the default "changeit" password
 
