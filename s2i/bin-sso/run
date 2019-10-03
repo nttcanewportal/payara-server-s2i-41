@@ -44,10 +44,10 @@ echo "create-custom-resource --restype=java.util.Properties --factoryclass=org.g
 
 # Import cert
 mkdir /tmp/cert
-wget http://192.168.66.251:8888/newportal/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
-keytool -import -keystore /opt/payara41/glassfish/domains/domain1/config/cacerts.jks -file /tmp/cert/openshift.app-lb.ocp2.devops.pd.ntt.hk.cer -alias openshift-app-lb2 -noprompt -storepass changeit
-wget http://192.168.66.251:8888/newportal/app-lb.ocp2.devops.pd.ntt.hk.cer -P /tmp/cert/
-keytool -import -keystore /opt/payara41/glassfish/domains/domain1/config/cacerts.jks -file /tmp/cert/app-lb.ocp2.devops.pd.ntt.hk.cer -alias app-lb2 -noprompt -storepass changeit
+wget http://192.168.66.251:8888/newportal/openshift.app-lb.ocp.devops.pd.ntt.hk.cer -P /tmp/cert/
+keytool -import -keystore /opt/payara41/glassfish/domains/domain1/config/cacerts.jks -file /tmp/cert/openshift.app-lb.ocp.devops.pd.ntt.hk.cer -alias openshift-app-lb -noprompt -storepass changeit
+wget http://192.168.66.251:8888/newportal/app-lb.ocp.devops.pd.ntt.hk.cer -P /tmp/cert/
+keytool -import -keystore /opt/payara41/glassfish/domains/domain1/config/cacerts.jks -file /tmp/cert/app-lb.ocp.devops.pd.ntt.hk.cer -alias app-lb -noprompt -storepass changeit
 
 ##startInForeground.sh
 AS_ADMIN_PATH=/opt/payara41/bin/asadmin
